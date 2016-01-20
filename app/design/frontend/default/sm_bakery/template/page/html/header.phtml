@@ -1,0 +1,150 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category   design_default
+ * @package    Mage
+ * @copyright  Copyright (c) 2008 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+global $var_yttheme; 
+//$var_yttheme->renderToolList(2, 'gif');
+?>
+<?php /*
+<div id="yt_header" class="wrap">*/ ?>
+	<div class="main clearfix">
+		<div class="header-mobi">
+			<div class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container">
+					<div class="navbar-inner">
+						<button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<div class="nav-collapse collapse">
+							<?php echo $this->getChildHtml('topLinks') ?>
+							<!--<strong><?php //echo $this->getWelcome() ?></strong>-->
+						</div>
+					</div>
+				</div>
+			</div>		
+		</div>
+		<div class="header-logo">
+			<div class="container">
+				<div class="row">		
+				<!-- BEGIN: Logo -->
+				<?php /* <div class="span2d4" data-normal="span3" data-tablet="span3" data-stablet="span3"> */ ?>
+					<h1 id="logo" class="font1">
+						<a title="<?php echo $this->getLogoAlt() ?>" href="<?php echo $this->getUrl('') ?>">
+							<p>
+								<?php // var_dump($var_yttheme->skinurl()); ?>
+								<?php
+									$baseUrl = str_replace('/index.php/', '', $this->getBaseURL());
+								?>
+								<img alt="<?php echo $this->getLogoAlt() ?>" src="<?php echo $baseUrl;?>/skin/frontend/default/sm_bakery/images/logo<?php if($var_yttheme->getParam('sitestyle')=='maroon'){ echo '';} else { echo '_'.$var_yttheme->getParam('sitestyle');}?>.png">
+							</p>
+						</a>
+					</h1>
+				<?php /* </div>	 */ ?>
+				<!-- END: Logo -->		
+				</div>
+			</div>
+		</div>
+		<div class="header-top">
+			<div class="container">
+				<div class="row">
+					<!-- BEGIN: Quick Access -->
+					<div class="span10 offset2" data-normal="span10 offset2" data-tablet="span9 offset3" data-stablet="span9 offset3">
+						<span class="msg-welcome"><?php echo $this->getWelcome() ?> <?php echo $this->getAdditionalHtml() ?></span>
+						<div class="yt-quick-access" >
+							<div class="quick-access">
+								<div class="shop-access">
+									<?php echo $this->getChildHtml('topLinks') ?>
+									<!--<strong><?php //echo $this->getWelcome() ?></strong>-->
+								</div>
+							</div>                            
+						</div>	
+                        <div class="currency-language">                
+							<?php echo $this->getChildHtml('currency'); ?> 
+                            <?php echo $this->getChildHtml('store_language') ?> 
+                        </div>
+						<!-- BEGIN: Search -->
+						<div class="top-search">
+							<?php  echo $this->getChildHtml('topSearch') ?>
+						</div>	
+						<!-- END: Search -->			
+					</div>	
+					<!-- END: Quick Access -->
+				</div>
+					<?php /* 
+					<div class="mtop20">
+						<div class="row">	
+						<div class="span2d4" data-normal="span3" data-tablet="span3" data-stablet="span3">		
+									<?php echo $this->getChildHtml('currency') ?>
+								</div>	
+								<div class="span2d4" data-normal="span3" data-tablet="span3" data-stablet="span3">		
+									<?php echo $this->getChildHtml('store_language') ?>
+								</div>		 				
+						</div>	
+					</div>	*/ ?>
+				</div>
+			</div>
+		</div>
+		<!-- BEGIN: Main Navigation -->
+		<!-- <div class="navbar navbar-inverse navbar-fixed-top">	 -->
+		<div class="header-nav">
+			
+				<div class="container">
+						<div class="header-nav-inner">
+							<div class="row">
+								<div class="span10 offset2" data-normal="span10 offset2" data-tablet="span10 offset2" data-stablet="span10 offset2">
+										<div id="yt_mainnav" class="clearfix">
+											<?php  
+											//var_dump($var_yttheme->getParam('menustyle'));
+											if($var_yttheme->getParam('menustyle')=='mega'){
+												echo $this->getChildHtml('megaMenu');
+												//echo $this->getChildHtml('topMenu');
+											}else{
+												echo $this->getChildHtml('topMenu');
+											} 
+											?>
+											<?php echo $this->getChildHtml('mobinav') ?>
+										</div>
+								</div>
+							</div>
+						</div>	
+				</div>
+			
+		</div>
+		<!-- END: Main Navigation -->
+	<?php /*
+		<div id="yt_wraptop" class="clearfix">	
+			<div class="container">
+				<div class="wraptop-main">
+				</div>
+				<div class="wraptop-bottom"></div>	
+			</div>
+		</div>
+	*/ ?>			
+	</div>
+<?php /*close div yt-header </div> */ ?>
+
+<!--<div id="yt_menuwrap" class="wrap">		
+</div>-->
