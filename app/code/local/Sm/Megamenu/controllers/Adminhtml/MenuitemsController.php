@@ -7,7 +7,7 @@
  # Websites: http://www.magentech.com
 -------------------------------------------------------------------------*/
 
-class Sm_Megamenu_Adminhtml_MenuitemsController extends Mage_Adminhtml_Controller_action
+class Sm_Megamenu_Adminhtml_MenuitemsController extends Mage_Adminhtml_Controller_Action
 {
 
 	protected function _initAction() {
