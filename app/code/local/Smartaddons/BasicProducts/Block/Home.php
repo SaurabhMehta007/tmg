@@ -75,7 +75,13 @@ class Smartaddons_BasicProducts_Block_Home extends Mage_Catalog_Block_Product_Li
 	protected function _getProductCollection()
 	{
 		if (is_null($this->_productCollection)) {
-			$collection = Mage::getSingleton('catalog/product')->getCollection();
+            $category_ids = $this->getProductCategory() ? $this->getProductCategory() : '';
+            $category_ids = preg_split('#[\s|,]+#', $category_ids, -1, PREG_SPLIT_NO_EMPTY);
+            $category_ids = array_map('intval', $category_ids);
+            $category_ids = array_unique($category_ids);
+           // $this->_addCategoryFilter($collection, $category_ids);
+			$collection = Mage::getModel('catalog/category')->load($category_ids[0])
+                ->getProductCollection();
 			$collection->addAttributeToSelect('*');
 			$collection->addAttributeToFilter('status', Mage_Catalog_Model_Product_Status::STATUS_ENABLED);
 			$visibility = array(
@@ -97,12 +103,9 @@ class Smartaddons_BasicProducts_Block_Home extends Mage_Catalog_Block_Product_Li
 				}
 			} else {
 				// catalog
-				$category_ids = $this->getProductCategory() ? $this->getProductCategory() : '';
-				$category_ids = preg_split('#[\s|,]+#', $category_ids, -1, PREG_SPLIT_NO_EMPTY);
-				$category_ids = array_map('intval', $category_ids);
-				$category_ids = array_unique($category_ids);
-				$this->_addCategoryFilter($collection, $category_ids);
-				// var_dump($category_ids);
+
+				
+				//die();
 			}
 			
 			$product_sort_by = $this->getProductOrderBy() ? trim($this->product_order_by) : 'rand()';
@@ -154,6 +157,8 @@ class Smartaddons_BasicProducts_Block_Home extends Mage_Catalog_Block_Product_Li
 			$collection->setPage(1, $numProducts);
 			$this->_productCollection = $collection;
 		}
+ //var_dump($this->_productCollection);
+//die();
 		return $this->_productCollection;
 	}
 	
