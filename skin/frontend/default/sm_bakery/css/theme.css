@@ -11053,3 +11053,11 @@ transition: transform 0.8s;
     /* margin-top: 10px; */
 }
 #confirmbox #btcancel{display:none;}
+
+
+/*----- Hide SideBar Finger */
+
+div#cpanel_btn {
+    display: none;
+}
+
